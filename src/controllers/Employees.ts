@@ -6,11 +6,12 @@ const CLASS_NAME = 'Employees';
 export default class Employees {
 
     employees: EmployeesModel[];
+    private static instance: Employees;
 
     /**
      * 
      */
-    constructor() {
+    private constructor() {
         this.employees = [
             new EmployeesModel('Yair Montes', 36, 'yair921', '2021-06-28'),
             new EmployeesModel('Diana Gómez', 25, 'dianag', '2020-04-28'),
@@ -22,14 +23,25 @@ export default class Employees {
      * 
      * @returns 
      */
-    public GetAll(): object {
+    public static GetInstance(): Employees {
+        if (!Employees.instance) {
+            Employees.instance = new Employees();
+        }
+        return Employees.instance;
+    }
+
+    /**
+     * 
+     * @returns 
+     */
+    public GetEmployees(): object {
         try {
             return {
                 status: true,
                 data: this.employees
             };
         } catch (error) {
-            let err = Helper.ProcessError(`${CLASS_NAME}.GetAll`, error);
+            let err = Helper.ProcessError(`${CLASS_NAME}.GetEmployees`, error);
             return {
                 status: false,
                 error: err
@@ -42,7 +54,7 @@ export default class Employees {
      * @param username 
      * @returns 
      */
-    public DeleteEmployee(username: string): object {
+    public DeleteEmployee(global: any, { username }: any): object {
         try {
             let employees = this.employees.filter(e => {
                 return e.username !== username;
@@ -52,7 +64,7 @@ export default class Employees {
                 status: true
             };
         } catch (error) {
-            let err = Helper.ProcessError(`${CLASS_NAME}.GetAll`, error);
+            let err = Helper.ProcessError(`${CLASS_NAME}.DeleteEmployee`, error);
             return {
                 status: false,
                 error: err

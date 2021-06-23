@@ -1,0 +1,30 @@
+type GetEmployeesResponse {
+    status: Boolean
+    data: [Employee]
+}
+
+type DeleteEmployeeResponse {
+    status: Boolean
+}
+
+type FailResponse {
+    status: Boolean
+    error: String
+}
+
+type Employee {
+    name: String
+    age: Int
+    username: String
+    hiredate: String
+}
+
+type Query {
+    "Get all employees"
+    getEmployees: GetEmployeesResponse
+}
+
+type Mutation {
+    "Delete employee"
+    deleteEmployee(username: String!): DeleteEmployeeResponse
+}
