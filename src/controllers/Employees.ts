@@ -13,9 +13,9 @@ export default class Employees {
      */
     private constructor() {
         this.employees = [
-            new EmployeesModel('Yair Montes', 36, 'yair921', '2021-06-28'),
-            new EmployeesModel('Diana Gómez', 25, 'dianag', '2020-04-28'),
-            new EmployeesModel('Juan Pérez', 29, 'juanp', '2021-03-14')
+            new EmployeesModel(1, 'Yair Montes', 36, 'yair921', '2021-06-28'),
+            new EmployeesModel(2, 'Diana Gómez', 25, 'dianag', '2020-04-28'),
+            new EmployeesModel(3, 'Juan Pérez', 29, 'juanp', '2021-03-14')
         ];
     }
 
@@ -54,10 +54,10 @@ export default class Employees {
      * @param username 
      * @returns 
      */
-    public DeleteEmployee(global: any, { username }: any): object {
+    public DeleteEmployee(global: any, { id }: any): object {
         try {
             let employees = this.employees.filter(e => {
-                return e.username !== username;
+                return e.id !== id
             });
             this.employees = employees;
             return {

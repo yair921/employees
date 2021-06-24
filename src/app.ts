@@ -17,7 +17,7 @@ const typeDefs = readFileSync(
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // Settings
-app.set('port', 3000);
+app.set('port', 3001);
 
 // Middlewares
 app.use(cors());

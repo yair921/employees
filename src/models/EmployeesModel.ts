@@ -1,6 +1,7 @@
 
 export default class EmployeesModel {
 
+    id: number;
     name: string;
     age: number;
     username: string;
@@ -13,7 +14,8 @@ export default class EmployeesModel {
      * @param username 
      * @param hiredate 
      */
-    constructor(name: string, age: number, username: string, hiredate: string) {
+    constructor(id: number, name: string, age: number, username: string, hiredate: string) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.username = username;

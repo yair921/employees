@@ -13,6 +13,7 @@ type FailResponse {
 }
 
 type Employee {
+    id: Int
     name: String
     age: Int
     username: String
@@ -26,5 +27,5 @@ type Query {
 
 type Mutation {
     "Delete employee"
-    deleteEmployee(username: String!): DeleteEmployeeResponse
+    deleteEmployee(id: Int!): DeleteEmployeeResponse
 }
