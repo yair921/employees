@@ -34,11 +34,17 @@ export default class Employees {
      * 
      * @returns 
      */
-    public GetEmployees(): object {
+    public GetEmployees({ name }: any = ''): object {
         try {
+            let newEmployees;
+            if (name !== '') {
+                newEmployees = this.employees.filter(f => f.name.toLowerCase().includes(name.toLowerCase()));
+            } else {
+                newEmployees = this.employees;
+            }
             return {
                 status: true,
-                data: this.employees
+                data: newEmployees
             };
         } catch (error) {
             let err = Helper.ProcessError(`${CLASS_NAME}.GetEmployees`, error);

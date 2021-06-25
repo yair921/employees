@@ -22,7 +22,7 @@ type Employee {
 
 type Query {
     "Get all employees"
-    getEmployees: GetEmployeesResponse
+    getEmployees(name: String): GetEmployeesResponse
 }
 
 type Mutation {
